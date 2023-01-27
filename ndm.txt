@@ -1,0 +1,48 @@
+Backend Deployment to AWS
+
+Step 1:  Launch a Windows or Linux Server Amazon EC2 instance.
+ * Sign in to the AWS Management Console and open the Amazon EC2 console at   
+  https://console.aws.amazon.com/ec2/
+* Choose EC2 Dashboard, and then choose Launch instance.
+* Choose the Amazon Machine Image (AMI) as per your requirement. 
+* Choose an instance type 
+* On the Configure Instance Details page, (Network, Subnet, Auto-assign Public  IP)
+* Choose Next: Add Storage.
+* On the Add Storage page, keep the default values and choose Next: Add Tags.
+* On the Add Tags page, choose Add Tag, then enter Name for Key and enter like web-server-name for Value.
+* Choose Next: Configure Security Group.
+* Choose Review and Launch.
+* On the Select an existing key pair or create a new key pair page, choose Create a new key pair and set Key pair name to web-server-key-pair. Choose Download Key Pair, and then save the key pair file on your local machine. You use this key pair file to connect to your EC2 instance.  
+Step 2:  To connect to your EC2 instance and install the Apache web server & node as per your requirement 
+For Apache & node 
+•	https://www.tecmint.com/install-nodejs-npm-in-centos-ubuntu/
+
+•	https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+
+•	https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-centos-7
+
+Note:- If you not enable ASG (Auto scaling Group ) then you should always associate your instance with EIP (Elastic Internet Protocol )
+•	An Elastic IP address is static; it does not change over time.
+•	To use an Elastic IP address, you first allocate one to your account, and then associate it with your instance or a network interface
+Step 3:  Create a Hosted Zone for our domain
+To create a hosted zone:
+1.	Open the Amazon Route 53 console at https://console.aws.amazon.com/route53/
+2.	Click Hosted Zones in the navigation pane.
+3.	Click Create Hosted Zone.
+4.	In Domain Name, enter domain name.
+5.	Click Create.
+Now, we can see new NS records from aws, and we want to copy it over to our current DNS provider's records.
+•	Now go to your domain name provider platform access your domain and change name server .
+•	Again come back on aws route 53 
+•	Create require records specially A Record
+  Step 4:  Upload your code on server via FTP
+•	Connect  your server using  .pem file 
+•	Before uploading data on server Give permission to user particular  location(directory) for current users
+ Step 5 : Install npm all packages which are used in our project
+Ex - npm i express
+npm i <package name>
+npm start or node index.js or nodemon index.js
+
+
+
+    
